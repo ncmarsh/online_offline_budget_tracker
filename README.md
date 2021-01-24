@@ -5,6 +5,8 @@
 
 Keep track of your budget and expenses while on the go! 
 
+![Home page](./demo/home_screenshot.png)
+
 ## Table of Contents
 
 1. [Usage](#Usage)
@@ -33,7 +35,7 @@ This application is a budget tracker where the user can input their income and e
 
 ## Demo
 
-
+![Demo](./demo/demo.gif)
 
 ## Roadmap
 
