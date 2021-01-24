@@ -12,6 +12,8 @@ request.onsuccess = function (event) {
 
   if (navigator.onLine) {
     checkDatabase();
+  } else {
+    checkDBOffline();
   }
 };
 
@@ -50,6 +52,23 @@ function checkDatabase() {
         });
     }
   };
+}
+
+function checkDBOffline() {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const store = transaction.objectStore("pending");
+  const getAll = store.getAll();
+
+  getAll.onsuccess = function () {
+    if (getAll.result.length > 0) {
+      getAll.result.forEach(item => {
+        transactions.unshift(item);
+      });
+      populateTotal();
+      populateTable();
+      populateChart();
+    }
+  }
 }
 
 window.addEventListener("online", checkDatabase);
